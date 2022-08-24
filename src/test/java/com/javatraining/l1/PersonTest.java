@@ -11,6 +11,9 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class PersonTest {
 
     private final static String[] MY_STATE_VALUES = {"PENDING", "PROCESSING", "PROCESSED"};
+    private final static int PROCESSED = 42;
+    private final static int PROCESSING = 32;
+    private final static int PENDING = 40;
 
     public String[] states() {
         return Arrays.copyOf(MY_STATE_VALUES, MY_STATE_VALUES.length);
@@ -150,6 +153,37 @@ public class PersonTest {
         LoggingLevelObject statuss = LoggingLevelObject.PROCESSED;
         if (statuss.isPending()) {
             System.out.println(LoggingLevelObject.PENDING);
+        }
+    }
+
+    @Test
+    public void demonstrateSwitchStatement() {
+
+        LoggingLevel state = LoggingLevel.PROCESSING;
+
+        switch (state) {
+            case PENDING:
+                System.out.println("Pending");
+                break;
+            case PROCESSING:
+                System.out.println("Processing");
+                break;
+            default:
+                System.out.println("Invalid");
+                //Throw error is good in here
+                break;
+        }
+
+        int myState = 43;
+        switch (myState) {
+            case PENDING:
+                System.out.println(PENDING);
+                break;
+            case PROCESSING:
+                System.out.println(PROCESSING);
+                break;
+            default:
+                System.out.println("ERROR");
         }
     }
 }
